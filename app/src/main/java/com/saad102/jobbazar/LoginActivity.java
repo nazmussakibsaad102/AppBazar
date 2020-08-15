@@ -1,8 +1,10 @@
 package com.saad102.jobbazar;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -103,4 +105,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         startActivity(i);
         finish();
     }
+    @Override
+    public void onBackPressed() {
+       finish();
+    }
+
 }

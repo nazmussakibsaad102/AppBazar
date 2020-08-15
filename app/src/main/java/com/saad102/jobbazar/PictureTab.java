@@ -35,7 +35,7 @@ import static android.app.Activity.RESULT_OK;
 
 public class PictureTab extends Fragment {
     private ImageView ivImageView;
-    private EditText edtImageDescription;
+    private EditText edtJobLink, edtJobDescription, edtJobTitle;
     private Button btnSharePicture;
     private Bitmap receivedImageBitmap;
 
@@ -50,7 +50,9 @@ public class PictureTab extends Fragment {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_picture_tab, container, false);
         ivImageView = view.findViewById(R.id.ivImage);
-        edtImageDescription = view.findViewById(R.id.edtJobLink);
+        edtJobTitle = view.findViewById(R.id.edtJobTitle);
+        edtJobLink = view.findViewById(R.id.edtJobLink);
+        edtJobDescription = view.findViewById(R.id.edtJobDescription);
         btnSharePicture = view.findViewById(R.id.btnSharePicture);
 
         ivImageView.setOnClickListener(new View.OnClickListener() {
@@ -78,8 +80,9 @@ public class PictureTab extends Fragment {
             public void onClick(View view) {
                 if (receivedImageBitmap != null) {
 
-                    if (edtImageDescription.getText().toString().equals("")) {
-                        FancyToast.makeText(getContext(), "Error: You must specify a description."  , Toast.LENGTH_SHORT, FancyToast.ERROR, true).show();
+                    if (edtJobLink.getText().toString().equals("") || edtJobDescription.getText().toString().equals("")
+                    ||edtJobTitle.getText().toString().equals("")) {
+                        FancyToast.makeText(getContext(), "Please input in all of the text fields."  , Toast.LENGTH_SHORT, FancyToast.ERROR, true).show();
 
 
                     } else {
@@ -90,10 +93,12 @@ public class PictureTab extends Fragment {
                         ParseFile parseFile = new ParseFile("img.png", bytes);
                         ParseObject parseObject = new ParseObject("Photo");
                         parseObject.put("picture", parseFile);
-                        parseObject.put("image_des", edtImageDescription.getText().toString());
+                        parseObject.put("job_title", edtJobTitle.getText().toString());
+                        parseObject.put("job_link", edtJobLink.getText().toString());
+                        parseObject.put("job_des", edtJobDescription.getText().toString());
                         parseObject.put("username", ParseUser.getCurrentUser().getUsername());
                         final ProgressDialog dialog = new ProgressDialog(getContext());
-                        dialog.setMessage("Loading...");
+                        dialog.setMessage("Uploading Data...");
                         dialog.show();
                         parseObject.saveInBackground(new SaveCallback() {
                             @Override

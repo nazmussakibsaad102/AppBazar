@@ -17,7 +17,8 @@
             android:id="@+id/tabLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
+            android:background="#4F5254"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
 
 
     </com.google.android.material.appbar.AppBarLayout>

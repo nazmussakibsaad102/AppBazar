@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#D4FFA2"
+    android:background="@drawable/sign_up_back_ground"
     android:onClick="onScreenTap"
     tools:context=".SignUpActivity">
 
@@ -13,13 +13,13 @@
         android:layout_width="304dp"
         android:layout_height="121dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="8dp"
         android:scaleType="fitCenter"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/jobbazar_icon" />
+        app:srcCompat="@drawable/job_bazar" />
 
     <EditText
         android:id="@+id/edtSignUpEmail"
@@ -55,7 +55,6 @@
         app:layout_constraintTop_toBottomOf="@+id/edtSignUpUsername" />
 
     <Button
-        android:elevation="10dp"
         android:id="@+id/btnLogIn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -63,6 +62,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="50dp"
         android:background="@android:color/holo_orange_light"
+        android:elevation="10dp"
         android:text="Log In"
         android:textColor="@android:color/background_light"
         android:textSize="30sp"
@@ -72,14 +72,14 @@
         app:layout_constraintTop_toBottomOf="@+id/btnSignUp" />
 
     <Button
-        android:elevation="10dp"
         android:id="@+id/btnSignUp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
         android:layout_marginTop="80dp"
         android:layout_marginEnd="50dp"
-        android:background="@color/ic_launcher_background"
+        android:background="@color/colorAccent"
+        android:elevation="10dp"
         android:text="Sign Up"
         android:textColor="@android:color/background_light"
         android:textSize="30sp"

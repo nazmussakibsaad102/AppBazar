@@ -1,8 +1,10 @@
 package com.saad102.jobbazar;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -77,7 +79,10 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                 if (edtMail.getText().toString().equals("") ||
                         edtUserName.getText().toString().equals("")||
                         edtPassword.getText().toString().equals("")){
-                    FancyToast.makeText(SignUpActivity.this,"E mail, Username and Password all are requred!",FancyToast.LENGTH_LONG,FancyToast.SUCCESS,true).show();
+                                   FancyToast.makeText(SignUpActivity.this,
+                                           "E mail, Username and Password all are requred!",
+                                           FancyToast.LENGTH_LONG,FancyToast.ERROR,true)
+                                           .show();
 
 
                 }else  {
@@ -117,7 +122,6 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
             case R.id.btnLogIn:
                 Intent i = new Intent(SignUpActivity.this, LoginActivity.class);
                 startActivity(i);
-                finish();
                 break;
         }
     }
@@ -134,7 +138,42 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     }
     private void transitionToSocialMediaActivity() {
         Intent i = new Intent(SignUpActivity.this,SocialMediaActivity.class);
-        finish();
         startActivity(i);
+        finish();
+    }
+
+    @Override
+    public void onBackPressed() {
+//        IsFinish("Want to go to job posts?");
+//        //super.onBackPressed();
+        finish();
+    }
+
+    private void IsFinish(String alertmessage) {
+
+        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                switch (which) {
+                    case DialogInterface.BUTTON_POSITIVE:
+//                        android.os.Process.killProcess(android.os.Process.myPid());
+                        // This above line close correctly
+                        Intent i = new Intent(SignUpActivity.this, HomePageActivity.class);
+                        startActivity(i);
+                        finish();
+                        break;
+
+                    case DialogInterface.BUTTON_NEGATIVE:
+                        break;
+                }
+            }
+        };
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(SignUpActivity.this);
+        builder.setMessage(alertmessage)
+                .setPositiveButton("Yes", dialogClickListener)
+                .setNegativeButton("No", dialogClickListener).show();
+
     }
 }

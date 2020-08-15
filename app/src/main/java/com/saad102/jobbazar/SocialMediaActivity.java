@@ -1,13 +1,17 @@
 package com.saad102.jobbazar;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.viewpager.widget.ViewPager;
 
 import android.Manifest;
+import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -68,8 +72,13 @@ public class SocialMediaActivity extends AppCompatActivity {
             case R.id.logoutUserItem:
                 ParseUser.getCurrentUser().logOut();
                 finish();
-                Intent i = new Intent(this, SignUpActivity.class);
+                Intent intent = new Intent(this, SignUpActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.jobPostItem:
+                Intent i = new Intent(this, HomePageActivity.class);
                 startActivity(i);
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -138,5 +147,39 @@ public class SocialMediaActivity extends AppCompatActivity {
 
         }
     }
+
+    @Override
+    public void onBackPressed() {
+        IsFinish("Go to Job Posts");
+        //super.onBackPressed();
+    }
+
+    private void IsFinish(String alertmessage) {
+
+        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                switch (which) {
+                    case DialogInterface.BUTTON_NEGATIVE:
+                        android.os.Process.killProcess(android.os.Process.myPid());
+//                        // This above line close correctly
+                        break;
+
+                    case DialogInterface.BUTTON_POSITIVE:
+                        finish();
+                        Intent i = new Intent(SocialMediaActivity.this, HomePageActivity.class);
+                        break;
+                }
+            }
+        };
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(SocialMediaActivity.this);
+        builder.setMessage(alertmessage)
+                .setPositiveButton("Yes", dialogClickListener)
+                .setNegativeButton("No", dialogClickListener).show();
+
+    }
+
 
 }

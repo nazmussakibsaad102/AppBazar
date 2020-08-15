@@ -79,6 +79,15 @@ public class ProfileTab extends Fragment {
         btnUpdateInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(edtCompanyGenre.getText().toString().equals("") ||
+                        edtCompanyGenre.getText().toString().equals("")||
+                        edtCompanyMail.getText().toString().equals("")||
+                        edtCompanyLocation.getText().toString().equals("")||
+                        edtCompanymotto.getText().toString().equals("")){
+                    FancyToast.makeText(getContext(),"Please fill up all of the text fields.",FancyToast.LENGTH_LONG, FancyToast.ERROR,true).show();
+
+
+                }
                 final ProgressDialog pd = new ProgressDialog(getContext());
                 pd.setMessage("Updating Info");
                 pd.show();

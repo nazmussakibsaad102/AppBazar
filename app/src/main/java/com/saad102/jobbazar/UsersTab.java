@@ -93,9 +93,9 @@ public class UsersTab extends Fragment {
                             prettyDialog.setTitle(user.getUsername() + " 's Info")
                                     .setMessage("company Name: " + user.get("companyName") + "\n"
                                             + "Mail: " +user.get("companyMail") + "\n"
-                                            + "Genre" + user.get("companyGenre") + "\n"
-                                            + "Location" + user.get("companyLocation")+ "\n"
-                                            + "Motto" + user.get("companyMotto"))
+                                            + "Genre: " + user.get("companyGenre") + "\n"
+                                            + "Location: " + user.get("companyLocation")+ "\n"
+                                            + "Motto: " + user.get("companyMotto"))
                                     .setIcon(R.drawable.person)
                                     .addButton(
                                             "OK",     // button text
@@ -118,6 +118,8 @@ public class UsersTab extends Fragment {
                 return true;
             }
         });
+
         return view;
     }
+
 }

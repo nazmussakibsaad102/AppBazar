@@ -14,14 +14,30 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".UsersPosts"></activity>
-        <activity android:name=".SocialMediaActivity"
-            android:theme="@style/Theme.Design.NoActionBar"/>
-        <activity android:name=".LoginActivity" />
+        <activity android:name=".JobPost"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".HomePageActivity"
+            android:screenOrientation="portrait">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".UsersPosts"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".SocialMediaActivity"
+            android:theme="@style/Theme.Design.NoActionBar"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".LoginActivity"
+            android:screenOrientation="portrait"/>
 
         <meta-data
             android:name="com.parse.SERVER_URL"
-            android:value="@string/back4app_server_url" />
+            android:value="@string/back4app_server_url"
+            android:screenOrientation="portrait"/>
         <meta-data
             android:name="com.parse.APPLICATION_ID"
             android:value="@string/back4app_app_id" />
@@ -29,12 +45,13 @@
             android:name="com.parse.CLIENT_KEY"
             android:value="@string/back4app_client_key" />
 
-        <activity android:name=".SignUpActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".SignUpActivity"
+            android:screenOrientation="portrait">
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
         </activity>
     </application>
 
